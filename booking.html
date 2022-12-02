@@ -26,7 +26,7 @@
 						  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
 							<span class="icon-bar"></span>                       
 						  </button>
-						  <a class="navbar-brand" href="index.html">Airline-X</a>
+						  <a class="navbar-brand" href="index.html">HOSTELS WORLD</a>
 						</div>
 						<div class="collapse navbar-collapse" id="myNavbar">
 							<ul class="nav navbar-nav">
@@ -36,7 +36,7 @@
 								<li><a href="contactus.html">Contact Us</a></li>
 							</ul>
 							<ul class="nav navbar-nav navbar-right">
-								<li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></a></li>
+								<li><a href="#myModal" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
 							</ul>
 							
 							<form class="navbar-form navbar-right">
@@ -61,7 +61,7 @@
 
 				<div class="container-fluid">
 					<header>
-						<h2>Book Your Flight</h2>
+						<h2>Book Your Hostel</h2>
 						<hr>
 					</header>
 
@@ -71,15 +71,17 @@
 						<div class="panel-group">
 						  	<div class="panel panel-default panel-transparent">
 						    	<div class="panel-heading">
-						    		<legend style="text-align: center;">Flight Information</legend>
+						    		<legend style="text-align: center;">Details of Applicant</legend>
 						    	</div>
 						    	<div class="panel-body">
 						    		<div class="input-group">
-										<label for="class">Class</label>
-										<select class="form-control trans-input-area" id="class">
-										<option>Economy</option>
-										<option>Business</option>
-										<option>First</option>
+										<label for="class">Hostel Preference</label>
+										<select class="form-control trans-input-area" id="class" name="hostelPref" onchange="handleChange(this.value, name)">
+										<option>RCC-I</option>
+										<option>RCC-II</option>
+										<option>RCC-III</option>
+										<option>AT-8</option>
+										<option>AT-5</option>
 										</select>
 										<a href="#"></a>
 									</div>
@@ -87,39 +89,34 @@
 										<br>
 										<div>
 											<div class="input-group">
-												<label for="from">From</label>
-												<input type="text" class="form-control trans-input-area" placeholder="Origin" name=""  id="from" required>
-											</div>
-											<div class="input-group">
-												<label for="to">To</label>
-												<input type="text" class="form-control trans-input-area" placeholder="Destination" name="" id="to" required>
+												<label for="from">Name :</label>
+												<input onchange="handleChange(this.value, name)" type="text" class="form-control trans-input-area" placeholder="Name" name="name"  id="name1" required value="" >
 											</div>
 										</div>
 										<br>
 										<div>
 											<div class="input-group">
-												<label for="Departure">Departure Date</label>
-												<input type="date" class="form-control trans-input-area" name="date1" min="2015-01-01"  required>
-											</div>
-											<div class="input-group">
-												<label>Return Date</label>
-												<input type="date" class="form-control trans-input-area" name="date2" max="2017-12-31" id="Return" >
+												<label for="from">Roll No :</label>
+												<input type="text" class="form-control trans-input-area" placeholder="Roll No" name="rollno"  id="from" required onchange="handleChange(this.value, name)">
 											</div>
 										</div>
 										<br>
 										<div>
 											<div class="input-group">
-												<label for="Adults">Adults</label>
-												<input type="number" class="form-control trans-input-area" id="Adults" value="1" name="" min="1" required>
+												<label for="from">Degree :</label>
+												<input type="text" class="form-control trans-input-area" placeholder="Degree" name="degree"  id="from" required onchange="handleChange(this.value, name)">
 											</div>
+										</div>
+										<br>
+										<div>
 											<div class="input-group">
-												<label>Children</label>
-												<input type="number" class="form-control trans-input-area" id="Children" value="0" name="" min="0">
+												<label for="from">Semester :</label>
+												<input type="text" class="form-control trans-input-area" placeholder="Semester" name="semester"  id="from" required onchange="handleChange(this.value, name)">
 											</div>
 										</div>
 										<br>
 										<div class="input-group-btn" style="text-align: right !important; ">
-										<button id="submit" href="booking2.html" class="btn btn-primary trans-input-area" type="submit" style="width: 30%"><a href="booking2.html" style="color: white">Continue</a></button>
+										<button onclick="handleSubmit()" id="submit" href="booking2.html" class="btn btn-primary trans-input-area" type="submit" style="width: 30%"><a href="booking2.html" style="color: white" >Continue</a></button>
 										<br>
 										</div>
 									</form>
@@ -145,6 +142,23 @@
 					&copy; Airline-X. All rights reserved.
 				</div>
 			</footer>
+			<script>
+				let details = {
+					hostelPref: "",
+					name: "",
+					rollno: "",
+					degree: "",
+					semester: "",
+				}
+				function handleChange(val, m){
+					details = {...details, [m]: val}
+					console.log("Chiranjib log: ", details )
+				}
+				function handleSubmit(){
+					localStorage.setItem("appDetails", JSON.stringify(details));
+					console.log("Chiranjib log onSubmit: ", details )
+				}
+			</script>
 
 	</body>
 </html>

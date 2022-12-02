@@ -15,10 +15,11 @@
         <link rel="stylesheet" href="mycss.css">
     </head>
     <body>
+        
                 <nav class="navbar navbar-inverse" style="border-radius:0px !important; margin:0;border: 0">
                     <div class="container-fluid">
                         <div href="index.html" style="text-align: center;color: white">
-                          <h2>Airline-X</h2>
+                          <h2>HOSTELS WORLD</h2>
                         </div>
                     </div>
                 </nav>
@@ -31,45 +32,38 @@
 
                 <div class="container-fluid">
                 <header>
-                    <h2>Flight Itineary</h2>
+                    <h2>Applicant Details Preview</h2>
                     <hr>
                 </header>
                 <div class="col-sm-12 col-sm-offset-0">
                     <div class="panel-group">
                         <div class="panel panel-default panel-transparent">
                             <div class="panel-heading">
-                                <legend style="text-align: center;color: black">Departure Information</legend>
+                                <legend style="text-align: center;color: black">Applicant Details Information</legend>
                             </div>
 
                             <div class="panel-body">
                                 <table class="table table-hover" style="color: black; font-size: 20px">
                                     <thead>
                                         <tr>
-                                            <th>Passengers</th>
-                                            <th>Flight#</th>
-                                            <th>From</th>
-                                            <th>To</th>
-                                            <th>Date</th>
-                                            <th>Time</th>
+                                            <th>Name</th>
+                                            <th>Roll No</th>
+                                            <th>Degree</th>
+                                            <th>Semester</th>
+                                            <th>Hostel Preference</th>
+                                            
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>Ali</td>
-                                            <td>4091</td>
-                                            <td>Lahore</td>
-                                            <td>Karachi</td>
-                                            <td>September, 15</td>
-                                            <td>04:30 pm</td>
+                                            <td id="name"></td>
+                                            <td id="rollno"></td>
+                                            <td id="degree"></td>
+                                            <td id="semester"></td>
+                                            <td id="hostelPref"></td>
+                                           
                                         </tr>
-                                        <tr>
-                                            <td>Ali</td>
-                                            <td>4091</td>
-                                            <td>Lahore</td>
-                                            <td>Karachi</td>
-                                            <td>September, 15</td>
-                                            <td>04:30 pm</td>
-                                        </tr>
+                                       
                                     </tbody>
                               </table>
                             </div>
@@ -84,38 +78,33 @@
                     <div class="panel-group">
                         <div class="panel panel-default panel-transparent">
                             <div class="panel-heading">
-                                <legend style="text-align: center; color: black">Return Information</legend>
+                                <legend style="text-align: center; color: black">Address Information</legend>
                             </div>
 
                             <div class="panel-body">
                                 <table class="table table-hover"  style="color: black; font-size: 20px">
                                     <thead>
                                         <tr>
-                                            <th>Passengers</th>
-                                            <th>Flight#</th>
-                                            <th>From</th>
-                                            <th>To</th>
-                                            <th>Date</th>
-                                            <th>Time</th>
+                                            <th>Salutation</th>
+                                            <th>First name</th>
+                                            <th>Last name</th>
+                                            <th>Phone Type</th>
+                                            <th>Phone Number</th>
+                                            <th>Email</th>
+                                        
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>Ali</td>
-                                            <td>4091</td>
-                                            <td>Lahore</td>
-                                            <td>Karachi</td>
-                                            <td>September, 15</td>
-                                            <td>04:30 pm</td>
+                                            <td id="salutation"></td>
+                                            <td id="firstname"></td>
+                                            <td id="lastname"></td>
+                                            <td id="phonetype"></td>
+                                            <td id="phonenumber" ></td>
+                                            <td id="email" ></td>
+                                           
                                         </tr>
-                                        <tr>
-                                            <td>Ali</td>
-                                            <td>4091</td>
-                                            <td>Lahore</td>
-                                            <td>Karachi</td>
-                                            <td>September, 15</td>
-                                            <td>04:30 pm</td>
-                                        </tr>
+                                        
                                     </tbody>
                               </table>
                             </div>
@@ -124,7 +113,7 @@
                 </div>
                 <br>
                 <dir class="col-sm-12 col-sm-offset-0">
-                    <div class=" trans-input-area well" style=" width: 100%; padding: 1rem  ;text-align:center;"><h2>Total Cost:2,00,000 Rs.</h2></div>
+                   
 
                 </dir>
                 
@@ -132,7 +121,7 @@
                 <br>
 
                 <div class="col-sm-12 col-sm-offset-0">
-                <button class="btn btn-primary btn-block trans-input-area" href="payement.html" type="submit"  style="height: 7rem; ;text-align: center;"  ><a href="payement.html" style="color:white"><h4>Proceed to Payment</h4></a></button>
+                <button class="btn btn-primary btn-block trans-input-area" href="payement.html" type="submit"  style="height: 7rem; ;text-align: center;"  ><a href="payement.html" style="color:white"><h4>Submit</h4></a></button>
                 </div>
             <br>
             <br>
@@ -156,7 +145,25 @@
                     &copy; Airline-X. All rights reserved.
                 </div>
             </footer>
+            <script>
+                let appDetails = JSON.parse(localStorage.getItem("appDetails"))
+                let addressDetails = JSON.parse(localStorage.getItem("addressDetails"))
+                document.getElementById("name").innerHTML = appDetails.name;
+                document.getElementById("rollno").innerHTML = appDetails.rollno;
+                document.getElementById("hostelPref").innerHTML = appDetails.hostelPref;
+                document.getElementById("degree").innerHTML = appDetails.degree;
+                document.getElementById("semester").innerHTML = appDetails.semester;
 
+
+                document.getElementById("salutation").innerHTML = addressDetails.salutation;
+                document.getElementById("firstname").innerHTML = addressDetails.firstname;
+                document.getElementById("lastname").innerHTML = addressDetails.lastname;
+                document.getElementById("phonetype").innerHTML = addressDetails.phonetype;
+                document.getElementById("phonenumber").innerHTML = addressDetails.phonenumber;
+                document.getElementById("email").innerHTML = addressDetails.email;
+                console.log("appdeatils chiranjib: ", (appDetails))
+                console.log("addressDetails chiranjib: ", (addressDetails))
+            </script>
     </body>
 </html>
 
